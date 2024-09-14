@@ -1,0 +1,18 @@
+[package]
+name = "solana-rfc6979"
+authors = ["Dean Little <@deanmlittle>"]
+description = "A simple implementation of rfc6979 for SVM"
+version = "0.2.0"
+edition = "2021"
+license = "MIT"
+
+# Dependencies
+[dependencies]
+solana-hmac-drbg = "0.1.0"
+
+[lib]
+name = "solana_rfc6979"
+crate-type = ["cdylib", "lib"]
+
+[profile.release]
+opt-level = 3
