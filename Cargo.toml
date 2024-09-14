@@ -2,7 +2,7 @@
 name = "solana-rfc6979"
 authors = ["Dean Little <@deanmlittle>"]
 description = "A simple implementation of rfc6979 for SVM"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2021"
 license = "MIT"
 
