@@ -1,5 +1,5 @@
 # solana-rfc6979
-A simple implementation of [RFC6979](https://datatracker.ietf.org/doc/html/rfc6979) for solana.
+A simple implementation of [RFC6979](https://datatracker.ietf.org/doc/html/rfc6979) for Solana.
 
 Uses `solana-hmac-drbg`, `solana-hmac-sha256` and `solana-nostd-sha256` under the hood.
 
