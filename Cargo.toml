@@ -1,18 +1,30 @@
 [package]
 name = "solana-rfc6979"
 authors = ["Dean Little <@deanmlittle>"]
-description = "A simple implementation of rfc6979 for SVM"
-version = "0.2.1"
-edition = "2021"
+description = "A more efficient, no_std implementation of RFC 6979 deterministic nonce generation for the Solana SVM"
 license = "MIT"
-
-# Dependencies
-[dependencies]
-solana-hmac-drbg = "0.1.0"
+version = "0.3.0"
+edition = "2024"
+repository = "https://github.com/blueshift-gg/solana-rfc6979"
+readme = "Readme.md"
+keywords = ["solana", "sbpf", "rfc6979", "ecdsa", "no-std"]
+categories = ["cryptography", "no-std"]
+exclude = [".github/", ".gitignore"]
 
 [lib]
-name = "solana_rfc6979"
-crate-type = ["cdylib", "lib"]
 
-[profile.release]
-opt-level = 3
+[features]
+# Transparently forwards to `solana-hmac-drbg/static-syscalls` (which in
+# turn forwards to `solana-hmac-sha256/static-syscalls`). Use the Upstream
+# BPF / sBPFv3 static-syscall ABI instead of dynamic `extern "C"` linking.
+# Requires a toolchain that supports static syscalls.
+static-syscalls = ["solana-hmac-drbg/static-syscalls"]
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(target_os, values("solana"))'] }
+
+[dependencies]
+solana-hmac-drbg = "0.2.0"
+
+[dev-dependencies]
+svm-unit-test = "0.1.5"
